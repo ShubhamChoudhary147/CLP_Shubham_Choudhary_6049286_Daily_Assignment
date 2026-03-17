@@ -12,6 +12,6 @@ public class App {
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("springconf.xml");
 		Employee e1 = (Employee) ac.getBean("emp1");
-		e1.displayDetails();
+		e1.show();
 	}
 }
