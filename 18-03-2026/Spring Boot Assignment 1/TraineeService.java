@@ -19,10 +19,6 @@ public class TraineeService {
         return traineeRepo.findAll();
     }
 
-    public List<Trainee> getTraineeByName(String name) {
-        return traineeRepo.findByTraineeName(name);
-    }
-
     public Trainee getTraineeById(int id) {
         Optional<Trainee> trainee = traineeRepo.findById(id);
         return trainee.orElse(null);
