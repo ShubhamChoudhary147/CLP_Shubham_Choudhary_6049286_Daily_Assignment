@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.dto.EmployeeDepartmentDTO;
+import com.cg.entity.Department;
 import com.cg.entity.Employee;
+import com.cg.service.DepartmentService;
 import com.cg.service.EmployeeService;
 
 import jakarta.validation.Valid;
@@ -24,6 +26,21 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService service;
+    
+    @Autowired
+    private DepartmentService depservice;
+    
+ // Insert Department
+    @PostMapping("/department")
+    public ResponseEntity<?> addDepartment(@RequestBody @Valid Department dept) {
+
+        Department saved = depservice.addDepartment(dept);
+
+        return new ResponseEntity<>(
+                "Department added successfully with ID: " + saved.getId(),
+                HttpStatus.CREATED
+        );
+    }
 
     @PostMapping("/employee/{name}")
     public ResponseEntity<?> add(@RequestBody @Valid Employee emp,@PathVariable String name) {
