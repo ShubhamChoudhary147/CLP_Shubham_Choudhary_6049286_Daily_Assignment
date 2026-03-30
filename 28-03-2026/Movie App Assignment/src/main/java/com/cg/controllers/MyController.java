@@ -17,13 +17,11 @@ public class MyController {
     @Autowired
     private IMovieService movieService; 
 
-    // ===================== HOME =====================
     @GetMapping("/")
     public ModelAndView home() {
         return new ModelAndView("home");
     }
 
-    // ===================== ADD MOVIE =====================
     @GetMapping("/addMovie")
     public ModelAndView showAddMoviePage() {
         ModelAndView mav = new ModelAndView("addMovie");
@@ -74,7 +72,6 @@ public class MyController {
         return mav;
     }
 
-    // ===================== SEARCH ALL MOVIES =====================
     @GetMapping("/allMovies")
     public ModelAndView getAllMovies() {
         ModelAndView mav = new ModelAndView("allMovies");
@@ -82,7 +79,6 @@ public class MyController {
         return mav;
     }
 
-    // ===================== SEARCH MOVIE BY CATEGORY =====================
     @GetMapping("/searchMovie")
     public ModelAndView showSearchPage() {
         ModelAndView mav = new ModelAndView("searchMovie");
@@ -100,7 +96,6 @@ public class MyController {
         return mav;
     }
 
-    // ===================== DELETE MOVIE =====================
     @GetMapping("/deleteMovie/{id}")
     public ModelAndView deleteMovie(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("allMovies");
@@ -117,7 +112,6 @@ public class MyController {
         return mav;
     }
 
-    // ===================== UPDATE MOVIE =====================
     @GetMapping("/editMovie/{id}")
     public ModelAndView showEditPage(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("editMovie");
