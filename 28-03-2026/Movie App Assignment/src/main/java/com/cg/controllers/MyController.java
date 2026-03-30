@@ -15,7 +15,7 @@ import java.util.Optional;
 public class MyController {
 
     @Autowired
-    private IMovieService movieService;  // ← Now using service, not repo directly
+    private IMovieService movieService; 
 
     // ===================== HOME =====================
     @GetMapping("/")
