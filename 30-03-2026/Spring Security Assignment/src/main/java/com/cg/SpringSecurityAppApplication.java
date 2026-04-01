@@ -40,9 +40,14 @@ public class SpringSecurityAppApplication {
 	@Bean
 	public DaoAuthenticationProvider getAuthenticationProvider() {
 		DaoAuthenticationProvider dao = new DaoAuthenticationProvider(myUserDetailService);
-		dao.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+		dao.setPasswordEncoder(passwordEncoder());
 		return dao;
 	}
+
+	@Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }
 
