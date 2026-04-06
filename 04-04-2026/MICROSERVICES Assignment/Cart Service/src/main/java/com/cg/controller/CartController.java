@@ -27,7 +27,15 @@ public class CartController {
 	}
 
 	@GetMapping("/{id}")
+	@CircuitBreaker(name = "cartservice", fallbackMethod = "fallBackMovieDetailById")
 	public Map<String, Object> getCart(@PathVariable Long id) {
 		return service.getCart(id);
+	}
+
+	public Map<String, Object> fallBackMovieDetailById(@PathVariable Long id, Exception e) {
+		Map<String, Object> response = new HashMap<>();
+		response.put("products", Collections.emptyList());
+		response.put("recommendations", Collections.emptyList());
+		return response;
 	}
 }
